@@ -168,3 +168,4 @@ dist
 .angular/cache/babel-webpack/ebb7cc7c3921bc9858a7edc1a444bab9.json
 .angular/cache/babel-webpack/ee69be8ceba479b4d8ad991f1467483f.json
 .angular/cache/babel-webpack/f7b5fd25cf050f5607525044c4f75321.json
+*.old
