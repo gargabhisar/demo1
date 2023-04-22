@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private webapi: WebAPIService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,19 +29,23 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    
+
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    console.log(this.loginForm.value);
-    
-    //let loginresult = this.webapi.login(this.loginForm.value);
-    // localStorage.setItem('isLoggedin', 'true');
-    // if (localStorage.getItem('isLoggedin')) {
-    //   this.router.navigate([this.returnUrl]);
-    // }
+    let loginresult = this.webapi.login(this.loginForm.value);
+
+    loginresult.subscribe((data: any) => {
+      if (data.statusCode == 400) {
+        alert('Login Failed.');
+      }
+      else {
+        sessionStorage.setItem('result', JSON.stringify(data.result));
+        this.router.navigateByUrl('dashboard')
+      }
+    })
   }
 
 }
