@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,24 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  Name: string;
+  Role: string;
+  Admin: boolean = false;
+  ImageSRC: string;
+  ProfilePercentage: number;
+
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
-    private router: Router
-  ) { }
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) { 
+    let result = JSON.parse(sessionStorage.getItem('result') || '{}');
+      this.Name = result.loggedInUser.name;
+      this.Role = result.loggedInUser.role;
+      this.ImageSRC = result.loggedInUser.image;
+      this.ProfilePercentage = result.loggedInUser.profilePercentage;
+  }
 
   ngOnInit(): void {
   }
@@ -38,4 +52,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  getImage() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.ImageSRC);
+  }
 }
