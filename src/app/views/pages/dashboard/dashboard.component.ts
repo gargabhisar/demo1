@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     fontFamily: "'Roboto', Helvetica, sans-serif"
   }
 
-  dashboarddata: DashboardModel;
+  dashboarddata: DashboardModel | null | undefined;
 
   constructor(private webapi: WebAPIService) {
     let dashboardCall = this.webapi.getDashboard();
