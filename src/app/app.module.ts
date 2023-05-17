@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CommonInterceptorInterceptor } from './services/common-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
           scss: () => import('highlight.js/lib/languages/scss'),
         }
       }
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: CommonInterceptorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

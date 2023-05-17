@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardModel } from 'src/app/Models/DashboardModel';
+import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +29,14 @@ export class DashboardComponent implements OnInit {
     fontFamily: "'Roboto', Helvetica, sans-serif"
   }
 
-  constructor() { }
+  dashboarddata: DashboardModel;
+
+  constructor(private webapi: WebAPIService) {
+    let dashboardCall = this.webapi.getDashboard();
+    dashboardCall.subscribe((data: any) => {
+      this.dashboarddata = data.result;
+    });
+  }
 
   ngOnInit(): void {
     this.totalBooksChartOptions = gettotalBooksChartOptions(this.obj);
