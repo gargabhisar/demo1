@@ -19,11 +19,11 @@ export class DashboardComponent implements OnInit {
 
   // colors and font variables for apex chart 
   obj = {
-    primary: "#0d6efd",
-    success: "#198754",
-    info: "#0dcaf0",
-    warning: "#ffc107",
-    danger: "#dc3545",
+    primary: "#6571ff",
+    success: "#05a34a",
+    info: "#66d1d1",
+    warning: "#fbbc06",
+    danger: "#ff3366",
     fontFamily: "'Roboto', Helvetica, sans-serif"
   }
 
@@ -89,7 +89,7 @@ function gettotalRoyaltyChartOptions(obj: any) {
   return {
     series: [{
       name: '',
-      data: [63, 10, 47, 23, 55, 35, 74, 90, 52, 77, 36]
+      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     }],
     chart: {
       type: "bar",
