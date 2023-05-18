@@ -18,13 +18,13 @@
     <div class="col-xl-12 main-content ps-xl-4 pe-xl-5">
         <div class="example">
             <div class="row row-cols-1 row-cols-md-5 g-4">
-                <div class="col">
+                <div class="col" *ngFor="let book of mybooks; let i = index" [attr.data-index]="i">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">12K Words Of Realisation</h5>
+                            <h5 class="card-title">{{book.title}}</h5>
                         </div>
                         <div class="card-body">
-                            <img src="assets/images/others/Cover.jpg" style="width: -webkit-fill-available;"
+                            <img [src]="getImage(book.image)" style="width: -webkit-fill-available;"
                                 class="card-img-top" alt="...">
                         </div>
                         <div class="card-footer text-center d-grid">
@@ -32,21 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Special title treatment</h5>
-                        </div>
-                        <div class="card-body">
-                            <img src="assets/images/others/Cover.jpg" style="width: -webkit-fill-available;"
-                                class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-footer text-center d-grid">
-                            <a href="" (click)="false" class="btn btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
+                <!-- <div class="col">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Special title treatment</h5>
@@ -116,8 +102,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Special title treatment</h5>
+                        </div>
+                        <div class="card-body">
+                            <img src="assets/images/others/Cover.jpg" style="width: -webkit-fill-available;"
+                                class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-footer text-center d-grid">
+                            <a href="" (click)="false" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
-
     </div>
 </div>

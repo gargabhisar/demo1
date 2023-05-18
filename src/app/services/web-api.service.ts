@@ -32,4 +32,9 @@ export class WebAPIService {
     let obs = this.http.get(this.base_url + this.Dashboard_url);
     return obs;
   }
+
+  getMyBooks() {
+    let obs = this.http.get(this.base_url + this.Books_url);
+    return obs;
+  }
 }
