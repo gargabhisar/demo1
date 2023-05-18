@@ -17,16 +17,16 @@ export class NavbarComponent implements OnInit {
   ProfilePercentage: number;
 
   constructor(
-    @Inject(DOCUMENT) private document: Document, 
+    @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     private router: Router,
     private sanitizer: DomSanitizer
-  ) { 
+  ) {
     let result = JSON.parse(sessionStorage.getItem('result') || '{}');
-      this.Name = result.loggedInUser.name;
-      this.Role = result.loggedInUser.role;
-      this.ImageSRC = result.loggedInUser.image;
-      this.ProfilePercentage = result.loggedInUser.profilePercentage;
+    this.Name = result.loggedInUser.name;
+    this.Role = result.loggedInUser.role;
+    this.ImageSRC = result.loggedInUser.image;
+    this.ProfilePercentage = result.loggedInUser.profilePercentage;
   }
 
   ngOnInit(): void {
