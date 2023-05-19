@@ -43,4 +43,9 @@ export class WebAPIService {
     let obs = this.http.get<any>(url, BookId);
     return obs;
   }
+
+  getAllSalesForAuthor() {
+    let obs = this.http.get(this.base_url + this.BookSales_url);
+    return obs;
+  }
 }
