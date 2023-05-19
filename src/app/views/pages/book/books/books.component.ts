@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BooksModel } from 'src/app/Models/BookModel';
+import { BooksModel } from 'src/app/Models/BooksModel';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({

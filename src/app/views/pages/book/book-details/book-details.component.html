@@ -1,1 +1,34 @@
-<p>book-details works!</p>
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <div>
+        <h4 class="mb-3 mb-md-0">Book Details</h4>
+    </div>
+    <div class="d-flex align-items-center flex-wrap text-nowrap">
+        <!-- <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+            <i class="btn-icon-prepend" data-feather="printer" appFeatherIcon></i>
+            Print
+        </button> -->
+        <!-- <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+        <i class="btn-icon-prepend" data-feather="download-cloud" appFeatherIcon></i>
+        Download Report
+      </button> -->
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xl-12 main-content ps-xl-4 pe-xl-5">
+        <div class="example">
+            <div class="d-flex align-items-start">
+              <img [src]="getImage(Book.image)" class="align-self-start wd-100 wd-sm-150 me-3" alt={{Book.title}}>
+              <div>
+                <h4 class="card-title">{{Book.title}}</h4>
+                <p class="fs-5"><span class="fw-bold">ISBN: </span>{{Book.isbn}}</p>
+                <p class="fs-5"><span class="fw-bold">SIZE: </span>{{Book.size}}</p>
+                <p class="fs-5"><span class="fw-bold">PAGES: </span>{{Book.pages}}</p>
+                <p class="fs-5"><span class="fw-bold">MRP Paperback: </span>{{Book.pricePaperback}}</p>                
+                <p class="fs-5"><span class="fw-bold">MRP Kindle: </span>{{Book.priceKindle}}</p>
+                <p class="fs-5"><span class="fw-bold">DESCRIPTION: </span>{{Book.description}}</p>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
