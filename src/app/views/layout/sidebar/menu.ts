@@ -20,6 +20,15 @@ export const MENU: MenuItem[] = [
     link: 'book/books'
   },
   {
+    label: 'Sales',
+    isTitle: true
+  },
+  {
+    label: 'Book Sales',
+    icon: 'layers',
+    link: '/booksales'
+  },
+  {
     label: 'Web Apps',
     isTitle: true
   },
