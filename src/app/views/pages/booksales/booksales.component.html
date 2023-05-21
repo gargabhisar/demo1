@@ -35,8 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <ng-container *ngFor="let sale of allSales">
-                                <tr>
+                                <tr *ngFor="let sale of allSales">
                                     <td>{{sale.title}}</td>
                                     <td>{{sale.isbn}}</td>
                                     <td>{{sale.orderId}}</td>
@@ -47,7 +46,6 @@
                                     <td>{{sale.quantity}}</td>
                                     <td>{{sale.royalty}}</td>
                                 </tr>
-                            </ng-container>
                         </tbody>
                         <tfoot>
                             <tr>
