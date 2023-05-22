@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-body">
                 <input class="form-control mt-2 mb-2" type="text" [(ngModel)]="searchText" (input)="Search()"
-                        placeholder="Search by Title, ISBN, Date, OrderId or Status" />
+                    placeholder="Search by Title, ISBN, Date, OrderId or Status" />
                 <div class="table-responsive">
                     <table id="dataTableExample" class="table table-sm table-hover table-bordered">
                         <thead>
@@ -63,6 +63,13 @@
                         </thead>
                     </table>
                 </div>
+                <br />
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" *ngFor="let item of pagecount; index as i"><a class="page-link"
+                                (click)="pagination(i+1)">{{i + 1}}</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

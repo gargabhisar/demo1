@@ -13,12 +13,16 @@ export class BooksalesComponent implements OnInit {
 
   allSales: Array<SalesModel>;
   searchText = "";
+  pagecount: any;
 
   constructor(private route: ActivatedRoute, private webapi: WebAPIService) {
     let getMyBooksSalesCall = this.webapi.getAllSalesForAuthor();
     getMyBooksSalesCall.subscribe((data: any) => {
       this.allSales = data.result;
+      this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);
+      this.pagination(1);
     });
+
   }
 
   ngOnInit(): void {
@@ -40,5 +44,13 @@ export class BooksalesComponent implements OnInit {
         this.allSales = data.result;
       });
     }
+  }
+
+  pagination(pagenumber: any) {
+    let getMyBooksSalesCall = this.webapi.getAllSalesForAuthor();
+      getMyBooksSalesCall.subscribe((data: any) => {
+        this.allSales = data.result;
+        this.allSales = this.allSales.slice((pagenumber*10)-10,(pagenumber*10));
+      });
   }
 }
