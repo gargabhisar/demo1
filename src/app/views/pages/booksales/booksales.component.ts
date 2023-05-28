@@ -11,6 +11,7 @@ import { formatDate } from '@angular/common';
 })
 export class BooksalesComponent implements OnInit {
 
+  originalData: Array<SalesModel>;
   allSales: Array<SalesModel>;
   searchText = "";
   pagecount: any;
@@ -18,7 +19,8 @@ export class BooksalesComponent implements OnInit {
   constructor(private route: ActivatedRoute, private webapi: WebAPIService) {
     let getMyBooksSalesCall = this.webapi.getAllSalesForAuthor();
     getMyBooksSalesCall.subscribe((data: any) => {
-      this.allSales = data.result;
+      this.originalData = data.result;
+      this.allSales = this.originalData;
       this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);
       this.pagination(1);
     });
@@ -32,25 +34,19 @@ export class BooksalesComponent implements OnInit {
     if (this.searchText !== "") {
       let searchValue = this.searchText.toLocaleLowerCase();
 
-      this.allSales = this.allSales.filter((data: any) => {
+      this.allSales = this.originalData.filter((data: any) => {
         return (data.status.toLocaleLowerCase().match(searchValue) || data.title.toLocaleLowerCase().match(searchValue) ||
           data.isbn.toLocaleLowerCase().match(searchValue) || data.orderId.toLocaleLowerCase().match(searchValue) ||
           formatDate(data.date, 'dd/MMM/yyyy', 'en-US').toLocaleLowerCase().match(searchValue))
       });
     }
     else {
-      let getMyBooksSalesCall = this.webapi.getAllSalesForAuthor();
-      getMyBooksSalesCall.subscribe((data: any) => {
-        this.allSales = data.result;
-      });
+      this.allSales = this.originalData;
     }
   }
 
   pagination(pagenumber: any) {
-    let getMyBooksSalesCall = this.webapi.getAllSalesForAuthor();
-      getMyBooksSalesCall.subscribe((data: any) => {
-        this.allSales = data.result;
-        this.allSales = this.allSales.slice((pagenumber*10)-10,(pagenumber*10));
-      });
+      this.Search();
+      this.allSales = this.allSales.slice((pagenumber * 10) - 10, (pagenumber * 10));
   }
 }
