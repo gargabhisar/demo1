@@ -19,10 +19,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-inline">
-                    <input class="form-control col-md-10" type="text" [(ngModel)]="searchText"
+                    <input class="form-control" type="text" [(ngModel)]="searchText"
                         placeholder="Search by Title, ISBN, Date, OrderId or Status" />
-                    <a class="btn btn-primary col-md-2" (click)="Search(1)" role="button">Search</a>
-                    <a class="btn btn-primary col-md-2" (click)="ClearSearch()" role="button">Clear Search</a>
+                    <a class="btn btn-primary" (click)="Search(1)" role="button">Search</a>
+                    <a class="btn btn-primary" (click)="ClearSearch()" role="button">Clear Search</a>
                 </div>
                 <div class="table-responsive">
                     <table id="dataTableExample" class="table table-sm table-hover table-bordered">
