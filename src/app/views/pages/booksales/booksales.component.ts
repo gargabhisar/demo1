@@ -22,7 +22,9 @@ export class BooksalesComponent implements OnInit {
       this.originalData = data.result;
       this.allSales = this.originalData;
       this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);
-      this.pagination(1);
+      //this.pagination(1);
+      this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);     
+      this.allSales = this.allSales.slice((1 * 10) - 10, (1 * 10));
     });
 
   }
@@ -30,7 +32,7 @@ export class BooksalesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  Search() {
+  Search(pagenumber: any) {
     if (this.searchText !== "") {
       let searchValue = this.searchText.toLocaleLowerCase();
 
@@ -39,14 +41,18 @@ export class BooksalesComponent implements OnInit {
           data.isbn.toLocaleLowerCase().match(searchValue) || data.orderId.toLocaleLowerCase().match(searchValue) ||
           formatDate(data.date, 'dd/MMM/yyyy', 'en-US').toLocaleLowerCase().match(searchValue))
       });
+      this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);     
+      this.allSales = this.allSales.slice((pagenumber * 10) - 10, (pagenumber * 10));
     }
     else {
       this.allSales = this.originalData;
+      this.pagecount = Array(Math.ceil(this.allSales.length / 10)).fill(0).map((x, i) => i);     
+      this.allSales = this.allSales.slice((pagenumber * 10) - 10, (pagenumber * 10));
     }
   }
 
-  pagination(pagenumber: any) {
-      this.Search();
-      this.allSales = this.allSales.slice((pagenumber * 10) - 10, (pagenumber * 10));
+  ClearSearch(){
+    this.searchText = "";
+    this.Search(1);
   }
 }
