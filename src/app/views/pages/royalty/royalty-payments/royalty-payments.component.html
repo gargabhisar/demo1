@@ -1,1 +1,104 @@
-<p>royalty-payments works!</p>
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <div>
+        <h4 class="mb-3 mb-md-0">Royalty Payments</h4>
+    </div>
+    <div class="d-flex align-items-center flex-wrap text-nowrap">
+        <!-- <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+            <i class="btn-icon-prepend" data-feather="printer" appFeatherIcon></i>
+            Print
+        </button> -->
+        <!-- <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+        <i class="btn-icon-prepend" data-feather="download-cloud" appFeatherIcon></i>
+        Download Report
+      </button> -->
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12 col-xl-12 stretch-card">
+      <div class="row flex-grow-1">
+        <div class="col-md-4 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <h6 class="card-title mb-0">Total Royalty</h6>
+              </div>
+              <div class="row">
+                <div>
+                  <h3 class="mb-2">&nbsp;</h3>
+                  <ngb-progressbar type="success" [value]="100"></ngb-progressbar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">Total Royalty Paid</h6>
+                </div>
+                <div class="row">
+                  <div>
+                    <h3 class="mb-2">&nbsp;</h3>
+                    <ngb-progressbar type="info" [value]="100"></ngb-progressbar>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">Pending Royalty</h6>
+                </div>
+                <div class="row">
+                  <div>
+                    <h3 class="mb-2">&nbsp;</h3>
+                    <ngb-progressbar type="warning" [value]="100"></ngb-progressbar>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="dataTableExample" class="table table-sm table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Date</th>
+                                <th>Transaction Details</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let payment of RoyaltyPaymentsTransactions?.royaltyPayments; let i = index"
+                                [attr.data-index]="i">
+                                <td>{{i+1}}</td>
+                                <td>{{payment.date | date: 'dd/MMM/yyyy'}}</td>
+                                <td>{{payment.transactionDetails}}</td>
+                                <td>{{payment.amount}}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Date</th>
+                                <th>Transaction Details</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RoyaltyTransactions } from 'src/app/Models/RoyaltyTransactions';
+import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
   selector: 'app-royalty-payments',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoyaltyPaymentsComponent implements OnInit {
 
-  constructor() { }
+  RoyaltyPaymentsTransactions: RoyaltyTransactions;
+  constructor(private webapi: WebAPIService) {
+    let getMyBooksCall = this.webapi.GetRoyaltyTransactionsForAuthor();
+    getMyBooksCall.subscribe((data: any) => {
+      this.RoyaltyPaymentsTransactions = data.result;
+    })
+  }
 
   ngOnInit(): void {
   }
