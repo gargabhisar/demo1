@@ -9,11 +9,19 @@ import { WebAPIService } from 'src/app/services/web-api.service';
 })
 export class RoyaltyPaymentsComponent implements OnInit {
 
+  paidRoyaltyPercentage: number;
+  pendingroyaltyPercentage: number;
+
   RoyaltyPaymentsTransactions: RoyaltyTransactions;
   constructor(private webapi: WebAPIService) {
     let getMyBooksCall = this.webapi.GetRoyaltyTransactionsForAuthor();
     getMyBooksCall.subscribe((data: any) => {
       this.RoyaltyPaymentsTransactions = data.result;
+
+      this.paidRoyaltyPercentage = Math.ceil((this.RoyaltyPaymentsTransactions.totalRoyaltyPaid / this.RoyaltyPaymentsTransactions.totalRoyalty) * 100);
+      this.pendingroyaltyPercentage = Math.floor((this.RoyaltyPaymentsTransactions.pendingRoyalty / this.RoyaltyPaymentsTransactions.totalRoyalty) * 100);
+      console.log(this.paidRoyaltyPercentage);
+      console.log(this.pendingroyaltyPercentage);
     })
   }
 
