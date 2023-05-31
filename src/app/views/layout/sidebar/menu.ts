@@ -35,7 +35,7 @@ export const MENU: MenuItem[] = [
   {
     label: 'Royalty Payments',
     icon: 'layers',
-    link: '/royalty'
+    link: 'royalty/royaltypayments'
   },
   {
     label: 'Web Apps',
