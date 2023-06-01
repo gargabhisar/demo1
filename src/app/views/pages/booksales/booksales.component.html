@@ -18,11 +18,14 @@
     <div class="col-md-12 stretch-card">
         <div class="card">
             <div class="card-body">
-                <div class="form-inline">
-                    <input class="form-control" type="text" [(ngModel)]="searchText"
-                        placeholder="Search by Title, ISBN, Date, OrderId or Status" />
-                    <a class="btn btn-primary" (click)="Search(1)" role="button">Search</a>
-                    <a class="btn btn-primary" (click)="ClearSearch()" role="button">Clear Search</a>
+                <div class="row mb-3">
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search by Title, ISBN, Date, OrderId or Status" />
+                    </div>
+                    <form class="forms-sample" style="display: contents;">
+                        <button class="btn btn-primary me-2 col-form-label" (click)="Search(1)" role="button">Search</button>
+                        <button class="btn btn-secondary col-form-label" (click)="ClearSearch()" role="button">Clear</button>
+                    </form>
                 </div>
                 <div class="table-responsive">
                     <table id="dataTableExample" class="table table-sm table-hover table-bordered">
