@@ -20,8 +20,6 @@ export class RoyaltyPaymentsComponent implements OnInit {
 
       this.paidRoyaltyPercentage = Math.ceil((this.RoyaltyPaymentsTransactions.totalRoyaltyPaid / this.RoyaltyPaymentsTransactions.totalRoyalty) * 100);
       this.pendingroyaltyPercentage = Math.floor((this.RoyaltyPaymentsTransactions.pendingRoyalty / this.RoyaltyPaymentsTransactions.totalRoyalty) * 100);
-      console.log(this.paidRoyaltyPercentage);
-      console.log(this.pendingroyaltyPercentage);
     })
   }
 
