@@ -53,4 +53,9 @@ export class WebAPIService {
     let obs = this.http.get(this.base_url + this.RoyaltyTransactions_url);
     return obs;
   }
+
+  GetAuthorProfile() {
+    let obs = this.http.get(this.base_url + this.Profile_url);
+    return obs;
+  }
 }
