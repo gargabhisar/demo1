@@ -9,7 +9,7 @@ import { AuthGuard } from './core/guard/auth.guard';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonInterceptorInterceptor } from './services/common-interceptor.interceptor';
@@ -24,7 +24,8 @@ import { CommonInterceptorInterceptor } from './services/common-interceptor.inte
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     AuthGuard,

@@ -9,16 +9,17 @@ import {
 import { Observable, catchError, finalize, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { WebAPIService } from './web-api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class CommonInterceptorInterceptor implements HttpInterceptor {
 
   auth_token: string;
-  constructor(private webapi: WebAPIService, public router: Router) {
+  constructor(private webapi: WebAPIService, public router: Router, private SpinnerService: NgxSpinnerService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    //this.SpinnerService.show(); 
+    this.SpinnerService.show(); 
     this.auth_token = this.webapi.getToken();
     const tokenized_request = request.clone({
       setHeaders: {
@@ -52,7 +53,7 @@ export class CommonInterceptorInterceptor implements HttpInterceptor {
       }),
       finalize(
         () => {
-          //this.SpinnerService.hide();
+          this.SpinnerService.hide();
         }
       ) 
     )

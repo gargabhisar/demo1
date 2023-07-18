@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class WebAPIService {
 
-  private base_url = "http://localhost:8009/";
+  private base_url = "http://inkquillsph-001-site1.htempurl.com/";
   private UserLogin_url = "Login/AuthorLogin";
   private Dashboard_url = "Dashboard/DashboardDetails";
   private Books_url = "Books/GetMyBooks";
