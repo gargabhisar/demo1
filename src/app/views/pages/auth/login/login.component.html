@@ -9,9 +9,19 @@
         </div>
         <div class="col-md-8 ps-md-0">
           <div class="auth-form-wrapper px-4 py-5">
-            <span class="nobleui-logo d-block mb-2">Welcome to InkQuills Dashboard!</span>
+            <span class="nobleui-logo d-block mb-2">Welcome to Sales Dashboard!</span>
             <h5 class="text-muted fw-normal mb-4">Log in to your account.</h5>
             <form class="forms-sample" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="publicationid" class="form-label">Publishing House</label>
+                <select class="form-control" name="publicationid" id="publicationid" formControlName="publicationid">
+                  <option value="" disabled selected>Select the Publishing House</option>
+                  <option *ngFor="let publication of allpublications" [ngValue]="publication.publicationId">{{publication.publicationName}}</option>
+                </select>
+                <div *ngIf="submitted && f.publicationid.errors" class="text-danger mt-1">
+                  <div *ngIf="f.publicationid.errors.required">Please select appropriate Publishing House.</div>
+                </div>
+              </div>
               <div class="mb-3">
                 <label for="useremail" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="useremail" placeholder="Enter your Email here..."

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class WebAPIService {
 
-  private base_url = "http://inkquillsph-001-site1.htempurl.com/";
+  private base_url = "https://localhost:44367/";
   private UserLogin_url = "Login/AuthorLogin";
   private Dashboard_url = "Dashboard/DashboardDetails";
   private Books_url = "Books/GetMyBooks";
@@ -15,6 +15,7 @@ export class WebAPIService {
   private BookSales_url = "Sales/GetAllSalesForAuthor";
   private RoyaltyTransactions_url = "Royalty/GetRoyaltyTransactionsForAuthor";
   private Profile_url = "Author/AuthorDetails";
+  private AllPublications = "Publications/GetAllPublications";
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -56,6 +57,11 @@ export class WebAPIService {
 
   GetAuthorProfile() {
     let obs = this.http.get(this.base_url + this.Profile_url);
+    return obs;
+  }
+
+  GetAllPublications(){
+    let obs = this.http.get(this.base_url + this.AllPublications);
     return obs;
   }
 }

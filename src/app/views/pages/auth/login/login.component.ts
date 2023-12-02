@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Publications } from 'src/app/Models/Publications';
 import { WebAPIService } from 'src/app/services/web-api.service';
 
 @Component({
@@ -12,14 +13,19 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
   loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private webapi: WebAPIService) { }
+  allpublications: Array<Publications>;
+  constructor(private formBuilder: FormBuilder, private router: Router, private webapi: WebAPIService) {
+    let getAllPublicationsCall = this.webapi.GetAllPublications();
+    getAllPublicationsCall.subscribe((data: any) => {
+      this.allpublications = data.result;
+    });
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       useremail: ['', [Validators.required, Validators.email]],
       userpassword: ['', [Validators.required, Validators.minLength(8)]],
-      publicationid: ['1']
+      publicationid: ['', [Validators.required]]
     });
   }
 
@@ -34,7 +40,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    
     let loginresult = this.webapi.login(this.loginForm.value);
 
     loginresult.subscribe((data: any) => {
