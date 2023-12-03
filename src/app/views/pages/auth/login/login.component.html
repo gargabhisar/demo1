@@ -14,7 +14,7 @@
             <form class="forms-sample" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">
                 <label for="publicationid" class="form-label">Publishing House</label>
-                <select class="form-control" name="publicationid" id="publicationid" formControlName="publicationid">
+                <select class="form-control form-select" name="publicationid" id="publicationid" formControlName="publicationid">
                   <option value="" disabled selected>Select the Publishing House</option>
                   <option *ngFor="let publication of allpublications" [ngValue]="publication.publicationId">{{publication.publicationName}}</option>
                 </select>
